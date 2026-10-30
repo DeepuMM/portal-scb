@@ -20,7 +20,7 @@ const config: ZudokuConfig = {
     {
       type: "category",
       label: "SCB",
-      items: ["/welcome"],
+      items: ["/welcome", "/onboarding"],
     },
   ],
   redirects: [{ from: "/", to: "/welcome" }],

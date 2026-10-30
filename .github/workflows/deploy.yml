@@ -33,12 +33,12 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # Drop the SSR bundle and add extensionless copies of each page so
-      # direct links like /scb/welcome work.
+      # The build nests the site under dist/<section>/ (its base path). Take
+      # that folder and add extensionless copies of each page so direct links like /scb/welcome work.
       - name: Stage files
         run: |
           mkdir -p stage/site stage/routes
-          rsync -a --exclude=server dist/ stage/site/
+          rsync -a "dist/$SECTION/" stage/site/
           cd stage/site
           find . -name '*.html' ! -name index.html | while read -r f; do
             base="${f%.html}"
