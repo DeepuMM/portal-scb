@@ -1,25 +1,19 @@
 import type { ZudokuConfig } from "zudoku";
-import { loadRegistry, portalConfig, type Section } from "./portal/portal";
+import { portalConfig, type Registry } from "./portal/portal";
+import section from "./section.json";
+import sections from "./sections.json";
 
-// This repo publishes only its own section of the portal: <portalUrl>/scb/
-const SECTION: Section = { id: "scb", label: "SCB", path: "/scb/" };
-
-// Other sections come from the hub's sections.json, fetched at build time.
-const registry = await loadRegistry({
-  portalUrl: "https://stzudokudocs20683.z23.web.core.windows.net",
-  sections: [SECTION],
-});
-if (!registry.sections.some((s) => s.id === SECTION.id)) {
-  registry.sections.push(SECTION);
-}
+// This repo publishes only its own section of the portal (section.json).
+// sections.json lists every section; npm run dev/build refresh it from the hub.
+const registry: Registry = sections;
 
 const config: ZudokuConfig = {
-  ...portalConfig(registry, SECTION.id),
-  site: { title: "SCB" },
+  ...portalConfig(registry, section.id),
+  site: { title: section.label },
   navigation: [
     {
       type: "category",
-      label: "SCB",
+      label: section.label,
       items: ["/welcome", "/onboarding"],
     },
   ],
