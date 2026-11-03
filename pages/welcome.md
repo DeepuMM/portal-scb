@@ -1,11 +1,11 @@
 ---
-title: SCB
+title: PortCo 1
 ---
 
-Welcome to the **SCB** section of the portal.
+Welcome to the **PortCo 1** section of the portal.
 
-This section is owned by SCB. Its content lives in this repo, and every
-push to `main` publishes it to `/scb/` on the portal without touching any
+This section is owned by PortCo 1. Its content lives in this repo, and every
+push to `main` publishes it to its own section of the portal without touching any
 other section.
 
 ## Adding pages
